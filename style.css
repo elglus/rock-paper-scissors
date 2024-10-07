@@ -1,27 +1,32 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 html,
 body {
     background-color: #eeeeee;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
     font-size: 30px;
     font-family: 'Courier New', Courier, monospace;
-    height: 100%;
+    height: 270px;
 }
 
 p {
     margin: 20px 0;
 }
 
-.main {
+.main,
+.results {
     background-color: #9a9a9a;
-    width: auto;
+    width: 500px;
     height: auto;
     border: solid #2c2c2c 3px;
     border-radius: 3px;
     padding: 20px;
     box-shadow: 5px 5px 5px gray;
+    text-align: center;
+    margin: auto;
 }
 
 .buttons {
@@ -32,7 +37,36 @@ p {
 .rock,
 .paper,
 .scissors {
+    background-color: #9a9a9a;
     border-radius: 50%;
+    border:none;
+}
+
+img {
     border: solid #2c2c2c 2px;
+    border-radius: 50%;
     height: 100px;
+    width: 100px;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+.results {
+    margin-top: 30px;
+}
+
+.info {
+    display: flex;
+}
+
+.you,
+.vs,
+.opponent {
+    flex: 1;
+}
+
+.score {
+    margin-top: 5px;
 }

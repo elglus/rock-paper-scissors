@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    <script defer src="script.js"></script>
     <title>Document</title>
 </head>
 <body>
@@ -12,10 +12,24 @@
         <p>Rock, Paper, Scissors</p>
         <p>Shoot!</p>
         <div class="buttons">
-            <img class="rock" src="images/rock.png">
-            <img class="paper" src="images/paper.png">
-            <img class="scissors" src="images/scissors.png">
+            <button class="rock">
+                <img src="images/rock.png"/>
+            </button>
+            <button class="paper">
+                <img src="images/paper.png"/>
+            </button>
+            <button class="scissors">
+                <img src="images/scissors.png"/>
+            </button>
         </div>
+    </div>
+    <div class="results">
+        <div class="info">
+            <div class="you">YOU <p class="youChoice"></p></div>
+            <div class="vs">VS</div>
+            <div class="opponent">OPPONENT <p class="opponentChoice"></p></div>
+        </div>
+        <div class="score"></div>
     </div>
 </body>
 </html>

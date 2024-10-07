@@ -5,23 +5,23 @@ function getComputerChoice() {
     return choices[randomNumber];
 }
 
-
-function getHumanChoice() {
-    let humanChoice = prompt("You choose...").toLowerCase();
-    if (choices.includes(humanChoice)) {
-        return humanChoice;
-    }
-    else {
-        alert("must be one of the following: rock, paper, scissors");
-        getHumanChoice()
-    }
-    
-}
-
 let humanScore = 0;
 let computerScore = 0;
 
+const you = document.querySelector(".youChoice");
+const opponent = document.querySelector(".opponentChoice");
+
+
+const score = document.querySelector(".score");
+score.textContent = `${humanScore}:${computerScore}`;
+
+const buttons = document.querySelectorAll("button");
+let round = 0;
+
 function playRound(humanChoice, computerChoice) {
+    you.textContent = `${humanChoice}`;
+    opponent.textContent = `${computerChoice}`;
+
     if (humanChoice === "rock" && computerChoice === "rock") {
         console.log("You're tied!");
         return 0;
@@ -60,21 +60,26 @@ function playRound(humanChoice, computerChoice) {
     }
 }
 
+buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+        let outcome = playRound(button.className, getComputerChoice());
+        if (outcome === 1) humanScore++;
+        else if (outcome === -1) computerScore++;
+        score.textContent = `${humanScore}:${computerScore}`;
+        round++;
 
-function playGame() {
-    for (let i = 0; i < 5; i++) {
-        let humanChoice = getHumanChoice();
-        let computerChoice = getComputerChoice();
-        let roundScore = playRound(humanChoice,computerChoice);
-        if (roundScore === 1) {
-            humanScore++;
-        }
-        else if (roundScore === -1) {
-            computerScore++;
-        }
-    }
-    console.log(`human: ${humanScore}\ncomputer: ${computerScore}`)
-}
+        if (round === 5) {
+            if (humanScore > computerScore) alert("You win!");
+            else if (computerScore > humanScore) alert("You lose!");
+            else alert("You're tied!");
 
+            round = 0;
+            humanScore = 0;
+            computerScore = 0;
 
-playGame();
+            score.textContent = `${humanScore}:${computerScore}`;
+            you.textContent = "";
+            opponent.textContent = "";
+            }
+    })
+})
